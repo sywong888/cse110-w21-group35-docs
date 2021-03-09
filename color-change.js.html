@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>color-change.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,25 +29,55 @@
 
 <div id="main">
     
+    <h1 class="page-title">color-change.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {timer, WORK_STATE, SHORT_STATE, LONG_STATE} from "./timer.js";
 
+/**
+ * @name colorChange
+ * @function
+ * @description Changes the color of the background and border of timer display when state changes
+ */
+function colorChange() {
+  switch(timer.currState) {
+    case WORK_STATE:
+      document.body.setAttribute('state',"pomo");
+      document.getElementById('timer-display').setAttribute('state',"pomo");
+      document.querySelector('.progress-container').setAttribute('state',"pomo");
+      break;
 
+    case SHORT_STATE:
+      document.body.setAttribute('state',"short");
+      document.getElementById('timer-display').setAttribute('state',"short");
+      document.querySelector('.progress-container').setAttribute('state',"short");
+      break;
 
+    case LONG_STATE:
+      document.body.setAttribute('state',"long");
+      document.getElementById('timer-display').setAttribute('state',"long");
+      document.querySelector('.progress-container').setAttribute('state',"long");
+      break;
+      
+    default:
+      document.body.setAttribute('state',"pomo");
+      document.getElementById('timer-display').setAttribute('state',"pomo");
+      document.querySelector('.progress-container').setAttribute('state',"pomo");
+      break;
+  }
+}
 
-
-
-
-
-
-    
-
-
-
+var module = module || {};
+export { colorChange };</code></pre>
+        </article>
+    </section>
 
 
 

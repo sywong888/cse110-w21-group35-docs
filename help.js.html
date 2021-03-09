@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>help.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,25 +29,49 @@
 
 <div id="main">
     
+    <h1 class="page-title">help.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @name revealHelp
+ * @function
+ * @description Opens the help modal when the help button is clicked
+ */
+function revealHelp() {
+    let helpModal = document.getElementById("helpModal");
+    helpModal.style.display = "block";
+    document.getElementById("helpButton").disabled = true; 
+    document.getElementById("closeModal").disabled = false; 
+}
 
+/**
+ * @name hideHelp
+ * @function
+ * @description Closes the help modal when the "x" inside the modal or anywhere outside of the modal is clicked
+ * @param {*} event The state of the help modal (open or closed)
+ */
+function hideHelp(event) {
+    let helpModal = document.getElementById("helpModal");
+    let closeModal = document.getElementById("closeModal");
+    if (event.target == helpModal || event.target == closeModal) {
+        helpModal.style.display = "none";
+    }
+    document.getElementById("helpButton").disabled = false; 
+    document.getElementById("closeModal").disabled = true; 
+}
 
-
-
-
-
-
-
-
-    
-
-
-
+// export functions and variables for testing
+var module = module || {};
+export { revealHelp, hideHelp }; </code></pre>
+        </article>
+    </section>
 
 
 
