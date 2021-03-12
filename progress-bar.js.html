@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: progress-bar.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,62 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: progress-bar.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const progress = document.getElementById("progress");
+const circles = document.querySelectorAll(".circle");
+let currentDeactive = 0;
 
+/**
+ * @name progressBar
+ * @function
+ * @description Updates the progress bar depending on the state that most recently finished
+ */
+function progressBar() {
+  currentDeactive++;
+  update();
+  if(currentDeactive == circles.length) {
+    reset();
+  }
+}
 
-    <h3> </h3>
+/**
+ * @name update
+ * @function
+ * @description Deactivates a circle when a state finishes
+ */
+function update() {
+  circles.forEach((circle,idx) => {
+    if(idx &lt; currentDeactive) {
+      circle.classList.add("deactive");
+    }
+  });
+}
 
+/**
+ * @name reset
+ * @function
+ * @description Resets the progress bar and reactivates all circle when a long break finishes
+ */
+function reset() {
+  circles.forEach((circle,idx) => {
+    circle.classList.remove("deactive");
+  });
+  currentDeactive = 0;
+}
 
+export { progress, circles, currentDeactive, progressBar, update, reset };
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
+</code></pre>
+        </article>
+    </section>
 
 
 

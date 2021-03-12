@@ -2,35 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>timer.js - Documentation</title>
+    <title>JSDoc: Source: timer.js</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#@type">@type</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#breakReminders">breakReminders</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkState">checkState</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#colorChange">colorChange</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getAlarm">getAlarm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getNotificationStatus">getNotificationStatus</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#hideHelp">hideHelp</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#hideSettings">hideSettings</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#keyboardShortcut">keyboardShortcut</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#LONG_MINS">LONG_MINS</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#onReset">onReset</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#onStart">onStart</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#playSound">playSound</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#POMO_MINS">POMO_MINS</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#revealHelp">revealHelp</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#revealSettings">revealSettings</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#setCustomTime">setCustomTime</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#SHORT_MINS">SHORT_MINS</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#showNotif">showNotif</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#timerId">timerId</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#updateState">updateState</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#updateTimer">updateTimer</a></span></li>
-</nav>
-
 <div id="main">
-    
-    <h1 class="page-title">timer.js</h1>
-    
+
+    <h1 class="page-title">Source: timer.js</h1>
 
     
 
@@ -39,8 +26,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { colorChange } from './color-change.js';
-import { showNotif, getNotificationStatus, playSound, getAlarm } from "./notifications.js";
+            <pre class="prettyprint source linenums"><code>import { colorChange } from "./color-change.js";
+import { showNotif, getNotificationStatus, playSound } from "./notifications.js";
 import { breakReminders } from "./breakReminder.js";
 import { progressBar } from "./progress-bar.js";
 
@@ -113,7 +100,6 @@ let timer = {
  * @description Checks the current state and updates the timer display and duration accordingly
  */
 function checkState() {
-
     // work state
     if (timer.counter.stateCtr % STATE_MOD === 0) {
         timer.currState = WORK_STATE;
@@ -141,8 +127,8 @@ function checkState() {
             document.getElementById("timer-display").innerText = 
             
                 `${SHORT_MINS}:00`;
-            let time = document.getElementById("timer-display").innerText 
             if(SHORT_MINS &lt; 10) {
+                let time = document.getElementById("timer-display").innerText; 
                 time = '0' + time;
             } 
             // disable reset button in break state
@@ -175,9 +161,8 @@ function updateState() {
             document.getElementById("state").innerText = SHORT_STATE;
             document.getElementById("timer-display").innerText = 
                 `${SHORT_MINS}:00`;
-            let time = document.getElementById("timer-display").innerText 
+            let time = document.getElementById("timer-display").innerText;
             if(SHORT_MINS &lt; 10) {
-                console.log(SHORT_MINS);
                 time = '0' + time;
                 document.getElementById("timer-display").innerText = time;
             } 
@@ -223,7 +208,6 @@ function updateTimer(duration) {
         minutes = minutes &lt; 10 ? "0" + minutes : minutes;
         seconds = seconds &lt; 10 ? "0" + seconds : seconds;
 
-        //console.log(minutes + ':' + seconds);
         document.getElementById("timer-display").innerText= 
             `${minutes}:${seconds}`;
 
@@ -356,7 +340,7 @@ function revealSettings() {
  * @description Closes the settings modal when the 'x' inside the modal or anywhere outside of the modal is clicked
  * @param {*} event The state of the settings modal (open or closed)
  */
-function hideSettings(event) {
+function hideSettings() {
     let settingsModal = document.getElementById("settingsModal");
     settingsModal.style.display = "none";
     if(document.getElementById("warning").innerText === "Work Periods must be greater than Break Periods"){
@@ -391,9 +375,9 @@ function keyboardShortcut(event) {
 
 // export functions and variables for testing
 var module = module || {};
-export {onStart, onReset, checkState,updateState, timer, setCustomTime, 
-    keyboardShortcut, revealSettings, hideSettings, SHORT_STATE, LONG_STATE, 
-    WORK_STATE, POMO_MINS, SHORT_MINS, LONG_MINS}; 
+export {onStart, onReset, checkState,updateState, setCustomTime, 
+    keyboardShortcut, revealSettings, hideSettings, timer, 
+    SHORT_STATE, LONG_STATE, WORK_STATE, POMO_MINS, SHORT_MINS, LONG_MINS}; 
 
 </code></pre>
         </article>
@@ -404,13 +388,17 @@ export {onStart, onReset, checkState,updateState, timer, setCustomTime,
 
 </div>
 
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#@type">@type</a></li><li><a href="global.html#breakReminders">breakReminders</a></li><li><a href="global.html#checkState">checkState</a></li><li><a href="global.html#colorChange">colorChange</a></li><li><a href="global.html#getAlarm">getAlarm</a></li><li><a href="global.html#getNotificationStatus">getNotificationStatus</a></li><li><a href="global.html#hideHelp">hideHelp</a></li><li><a href="global.html#hideSettings">hideSettings</a></li><li><a href="global.html#keyboardShortcut">keyboardShortcut</a></li><li><a href="global.html#LONG_MINS">LONG_MINS</a></li><li><a href="global.html#onReset">onReset</a></li><li><a href="global.html#onStart">onStart</a></li><li><a href="global.html#playSound">playSound</a></li><li><a href="global.html#POMO_MINS">POMO_MINS</a></li><li><a href="global.html#progressBar">progressBar</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#revealHelp">revealHelp</a></li><li><a href="global.html#revealSettings">revealSettings</a></li><li><a href="global.html#setCustomTime">setCustomTime</a></li><li><a href="global.html#SHORT_MINS">SHORT_MINS</a></li><li><a href="global.html#showNotif">showNotif</a></li><li><a href="global.html#timerId">timerId</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateState">updateState</a></li><li><a href="global.html#updateTimer">updateTimer</a></li></ul>
+</nav>
+
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Fri Mar 12 2021 04:29:07 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Mar 12 2021 06:29:46 GMT+0000 (Coordinated Universal Time)
 </footer>
 
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
 </body>
 </html>
