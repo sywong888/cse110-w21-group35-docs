@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: help.js</title>
+    <title>JSDoc: Source: progress-bar.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: help.js</h1>
+    <h1 class="page-title">Source: progress-bar.js</h1>
 
     
 
@@ -26,36 +26,52 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @name revealHelp
+            <pre class="prettyprint source linenums"><code>const progress = document.getElementById('progress');
+const circles = document.querySelectorAll('.circle');
+let currentDeactive = 0;
+
+/**
+ * @name progressBar
  * @function
- * @description Opens the help modal when the help button is clicked
+ * @description Updates the progress bar depending on the state that most recently finished
  */
-function revealHelp() {
-    let helpModal = document.getElementById('helpModal');
-    helpModal.style.display = 'block';
-    document.getElementById('helpButton').disabled = true; 
-    document.getElementById('closeModal').disabled = false; 
+function progressBar() {
+  currentDeactive++;
+  update();
+  if(currentDeactive == circles.length) {
+    reset();
+  }
 }
 
 /**
- * @name hideHelp
+ * @name update
  * @function
- * @description Closes the help modal when the 'x' inside the modal or anywhere outside of the modal is clicked
- * @param {*} event The state of the help modal (open or closed)
+ * @description Deactivates a circle when a state finishes
  */
-function hideHelp(event) {
-    let helpModal = document.getElementById('helpModal');
-    let closeModal = document.getElementById('closeModal');
-    if (event.target == helpModal || event.target == closeModal) {
-        helpModal.style.display = 'none';
+function update() {
+  circles.forEach((circle,idx) => {
+    if(idx &lt; currentDeactive) {
+      circle.classList.add('deactive');
     }
-    document.getElementById('helpButton').disabled = false; 
-    document.getElementById('closeModal').disabled = true; 
+  });
 }
 
-// export functions for testing
-export { revealHelp, hideHelp }; </code></pre>
+/**
+ * @name reset
+ * @function
+ * @description Resets the progress bar and reactivates all circle when a long break finishes
+ */
+function reset() {
+  circles.forEach((circle,idx) => {
+    circle.classList.remove('deactive');
+  });
+  currentDeactive = 0;
+}
+
+// export functions and variables for testing
+export { progress, circles, currentDeactive, progressBar, update, reset };
+
+</code></pre>
         </article>
     </section>
 
