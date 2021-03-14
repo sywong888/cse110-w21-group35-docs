@@ -56,29 +56,27 @@ function getAlarm(){
  * @return {string} The message body of the notifcation
  */
 function showNotif(typeOfNotif){
-    //Set the title, icon, and body for the creation of the notification
+    // set the notification's title, icon, and body
     let title = 'Productoro';
     let icon = 'https://media.istockphoto.com/photos/tomato-isolated-on-white-background-picture-id466175630?k=6&amp;m=466175630&amp;s=612x612&amp;w=0&amp;h=fu_mQBjGJZIliOWwCR0Vf2myRvKWyQDsymxEIi8tZ38=';
-    //set body to some default vaule to be filled in later
     let body = '';
-    //depending on typeOfNotif we will set the body of the notifcation to have different text
+
+    // body of notification depends on the current state
     if(typeOfNotif === 'Long Break State'){
-        //when it is a long break then the body says the following
         body = 'You have completed a pomo! Your long break begins now :)';
     }
     else if(typeOfNotif === 'Short Break State'){
-        //when it is a short break then the body says the following
         body = 'You have completed a pomo! Your short break begins now :)';
     }
     else if(typeOfNotif === 'Work State'){
-        //when a new pomo starts then the body says the following
         body = 'Your break has ended. A new pomo begins now :)';
     }
 
     if (typeof Notification !== 'undefined') {
-        //Create the notification with the values above and it automatically displays
+        // display the notification
         let workNotif = new Notification(title,{body, icon});
-        //After 5 seconds close the notification
+
+        // close the notification after five seconds
         setTimeout(() => {
             workNotif.close();
         }, 5000);
@@ -94,28 +92,19 @@ function showNotif(typeOfNotif){
  * @return {boolean} True if user prefers notifications; otherwise, false
  */
 function getNotificationStatus(){
-    //If the browser does not support Notifications then return false
     if(!window.Notification){
         return false;
     }
 
-    //If the user allows notifications then return true
     if(Notification.permission === 'granted'){
         return true;
-    }
-    //If the user has not set notifications preferences then ask user
+    }  
     else if(Notification.permission === 'default'){
-        
-        //Ask the user if they would like to be sent notifcations
-        Notification.requestPermission();
-        //once the user has picked a preference then run the method agian and we are ensured
-        //the second call will enter either the denied or granted block
+        Notification.requestPermission(); // prompt the user if notification preferences are not set
         return getNotificationStatus();
-
     }
-    //If the user has their notifcations disabled, return false
     else{
-        return false;
+        return false; // return false if notifications are disabled
     }
 }
 
@@ -131,13 +120,13 @@ export { showNotif, getNotificationStatus, playSound, getAlarm };
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#@type">@type</a></li><li><a href="global.html#breakReminders">breakReminders</a></li><li><a href="global.html#checkState">checkState</a></li><li><a href="global.html#colorChange">colorChange</a></li><li><a href="global.html#getAlarm">getAlarm</a></li><li><a href="global.html#getNotificationStatus">getNotificationStatus</a></li><li><a href="global.html#hideHelp">hideHelp</a></li><li><a href="global.html#hideSettings">hideSettings</a></li><li><a href="global.html#keyboardShortcut">keyboardShortcut</a></li><li><a href="global.html#LONG_MINS">LONG_MINS</a></li><li><a href="global.html#onReset">onReset</a></li><li><a href="global.html#onStart">onStart</a></li><li><a href="global.html#playSound">playSound</a></li><li><a href="global.html#POMO_MINS">POMO_MINS</a></li><li><a href="global.html#progressBar">progressBar</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#revealHelp">revealHelp</a></li><li><a href="global.html#revealSettings">revealSettings</a></li><li><a href="global.html#setCustomTime">setCustomTime</a></li><li><a href="global.html#SHORT_MINS">SHORT_MINS</a></li><li><a href="global.html#showNotif">showNotif</a></li><li><a href="global.html#timerId">timerId</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateState">updateState</a></li><li><a href="global.html#updateTimer">updateTimer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#@type">@type</a></li><li><a href="global.html#breakReminders">breakReminders</a></li><li><a href="global.html#checkState">checkState</a></li><li><a href="global.html#colorChange">colorChange</a></li><li><a href="global.html#currentDeactive">currentDeactive</a></li><li><a href="global.html#getAlarm">getAlarm</a></li><li><a href="global.html#getNotificationStatus">getNotificationStatus</a></li><li><a href="global.html#hideHelp">hideHelp</a></li><li><a href="global.html#hideSettings">hideSettings</a></li><li><a href="global.html#keyboardShortcut">keyboardShortcut</a></li><li><a href="global.html#LONG_MINS">LONG_MINS</a></li><li><a href="global.html#onReset">onReset</a></li><li><a href="global.html#onStart">onStart</a></li><li><a href="global.html#playSound">playSound</a></li><li><a href="global.html#POMO_MINS">POMO_MINS</a></li><li><a href="global.html#progressBar">progressBar</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#revealHelp">revealHelp</a></li><li><a href="global.html#revealSettings">revealSettings</a></li><li><a href="global.html#setCustomTime">setCustomTime</a></li><li><a href="global.html#SHORT_MINS">SHORT_MINS</a></li><li><a href="global.html#showNotif">showNotif</a></li><li><a href="global.html#timerCountdown">timerCountdown</a></li><li><a href="global.html#timerId">timerId</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateState">updateState</a></li><li><a href="global.html#updateTimer">updateTimer</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Mar 14 2021 07:30:25 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Mar 14 2021 07:47:01 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
